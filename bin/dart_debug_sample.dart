@@ -1,4 +1,3 @@
-import 'package:dart_debug_sample/dart_debug_sample.dart' as dart_debug_sample;
 import 'package:dart_debug_sample/dart_debug_sample.dart';
 
 void main() {
