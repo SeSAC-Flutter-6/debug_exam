@@ -1,16 +1,14 @@
 import 'package:intl/intl.dart';
 
 class YukymController {
-
   // DateTime.parse(_userData.value!.selectDate)
-  String nowDate = DateFormat('yyyy-mm-dd').format(DateTime.now());
+  String nowDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
   late String nowTime;
 
   // 1. 자시의 국 : 갑자1국 = getTyOne()의 값
   String getTyA() {
-    List<YukymTimeModel> timeDataOne =
-    _getTimeDataOne(nowDate);
+    List<YukymTimeModel> timeDataOne = _getTimeDataOne(nowDate);
 
     if (timeDataOne.isNotEmpty) {
       nowTime = timeDataOne.first.ty1;
@@ -32,13 +30,12 @@ class YukymController {
       return nowTime;
     } else {
       // Handle the case when the list is empty
-      return '경오7국';  // Or any other appropriate action
+      return '경오7국'; // Or any other appropriate action
     }
   }
 
   String getTyB() {
-    List<YukymTimeModel> timeDataOne =
-    _getTimeDataOne(nowDate);
+    List<YukymTimeModel> timeDataOne = _getTimeDataOne(nowDate);
     String result = timeDataOne.first.ty12;
 
     final nowTime = DateTime.now();
