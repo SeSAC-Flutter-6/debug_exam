@@ -7,32 +7,20 @@ class YukymController {
   late String nowTime;
 
   // 1. 자시의 국 : 갑자1국 = getTyOne()의 값
-  String getTyA() {
-    List<YukymTimeModel> timeDataOne = _getTimeDataOne(nowDate);
+String getTyA() {
+  List<YukymTimeModel> timeDataOne = _getTimeDataOne(nowDate);
+  int month = int.parse(nowDate.substring(5, 7));
 
-    if (timeDataOne.isNotEmpty) {
-      nowTime = timeDataOne.first.ty1;
-
-      final month = nowDate.substring(5, 7);
-      if (month == '01' || month == '02') {
-        return '경오1국';
-      } else if (month == '03' || month == '04') {
-        return '경오2국';
-      } else if (month == '05' || month == '06') {
-        return '경오3국';
-      } else if (month == '07' || month == '08') {
-        return '경오4국';
-      } else if (month == '09' || month == '10') {
-        return '경오5국';
-      } else if (month == '11' || month == '12') {
-        return '경오6국';
-      }
-      return nowTime;
-    } else {
-      // Handle the case when the list is empty
-      return '경오7국'; // Or any other appropriate action
-    }
+  if (timeDataOne.isEmpty) {
+    return '경오7국';
   }
+  if (month < 1 || month > 12) {
+    return timeDataOne.first.ty1; 
+  }
+  //month값이 유효하면 index계산
+  String index = ((month + 1) ~/ 2).toString();
+  return '경오$index국';
+}
 
   String getTyB() {
     List<YukymTimeModel> timeDataOne = _getTimeDataOne(nowDate);
